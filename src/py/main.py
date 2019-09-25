@@ -1,6 +1,3 @@
-
-import sys
-import math
 import random
 
 import pygame
@@ -11,10 +8,10 @@ from OpenGL.GLU import *
 from OpenGL.GLUT import *
 
 # note: this is how you import something in the same level as the script
-from src.sphere import Sphere
-from src.cube import Cube
-from src.cube import Block
-from src.light import Light
+from src.py.sphere import Sphere
+from src.py.cube import Cube
+from src.py.cube import Block
+from src.py.light import Light
 
 
 class App(object):
