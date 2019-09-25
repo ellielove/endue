@@ -2,6 +2,9 @@
 import sys
 import math
 
+import pygame
+from pygame.locals import *
+
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
@@ -13,7 +16,8 @@ from src.light import Light
 
 class App(object):
     def __init__(self, width=800, height=600):
-        self.title = b'OpenGL demo'
+        self.title = 'Ellie is getting back to ballet, get the hell off her labes!'
+        self.fps = 60
         self.width = width
         self.height = height
         self.angle = 0
@@ -24,12 +28,11 @@ class App(object):
         self.sphere2 = Sphere(1, (4, 2, 0), (1, 0.4, 0.4, 1))
 
     def start(self):
-        glutInit()
-        glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH)
-        glutInitWindowPosition(50, 50)
-        glutInitWindowSize(self.width, self.height)
-        glutCreateWindow(self.title)
+        pygame.init()
+        pygame.display.set_mode((self.width, self.height), OPENGL | DOUBLEBUF)
+        pygame.display.set_caption(self.title)
 
+        glEnable(GL_CULL_FACE)
         glEnable(GL_DEPTH_TEST)
         self.light.enable()
 
@@ -39,26 +42,34 @@ class App(object):
         gluPerspective(40., aspect, 1., 40.)
         glMatrixMode(GL_MODELVIEW)
 
-        glutDisplayFunc(self.display)
-        glutSpecialFunc(self.keyboard)
-        glutMainLoop()
+        eng_clock = pygame.time.Clock()
+        while True:
+            dt = eng_clock.tick(self.fps)
+            self.process_input(dt)
+            self.display()
 
-    def keyboard(self, key, x, y):
-        if key == GLUT_KEY_INSERT:
-            sys.exit(0)
-        if key == GLUT_KEY_UP:
-            self.distance -= 0.1
-        if key == GLUT_KEY_DOWN:
-            self.distance += 1
-        if key == GLUT_KEY_LEFT:
-            self.angle -= 0.05
-        if key == GLUT_KEY_RIGHT:
-            self.angle += 0.05
-        if key == GLUT_KEY_F1:
-            self.light.switch_color()
+    def process_input(self, dt):
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                self.quit()
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE:
+                    self.quit()
+                if event.key == K_F1:
+                    self.light.switch_color()
+
+        keypress = pygame.key.get_pressed()
+        if keypress[K_UP]:
+            self.distance -= 0.01 * dt
+        if keypress[K_DOWN]:
+            self.distance += 0.01 * dt
+        if keypress[K_LEFT]:
+            self.angle -= 0.005 * dt
+        if keypress[K_RIGHT]:
+            self.angle += 0.005 * dt
+
         self.distance = max(10, min(self.distance, 20))
         self.angle %= math.pi * 2
-        glutPostRedisplay()
 
     def display(self):
         x = math.sin(self.angle) * self.distance
@@ -74,7 +85,11 @@ class App(object):
         self.light.render()
         self.sphere1.render()
         self.sphere2.render()
-        glutSwapBuffers()
+        pygame.display.flip()
+
+    def quit(self):
+        pygame.quit()
+        sys.exit()
 
 
 if __name__ == '__main__':

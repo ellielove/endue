@@ -12,10 +12,11 @@ class Sphere(object):
         self.radius = radius
         self.position = position
         self.color = color
+        self.quadratic = gluNewQuadric()
 
     def render(self):
         glPushMatrix()
         glTranslatef(*self.position)
         glMaterialfv(GL_FRONT, GL_DIFFUSE, self.color)
-        glutSolidSphere(self.radius, Sphere.slices, Sphere.stacks)
+        gluSphere(self.quadratic, self.radius, Sphere.slices, Sphere.stacks)
         glPopMatrix()
