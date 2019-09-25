@@ -11,6 +11,7 @@ from OpenGL.GLUT import *
 
 # note: this is how you import something in the same level as the script
 from src.sphere import Sphere
+from src.cube import Cube
 from src.light import Light
 
 
@@ -26,12 +27,14 @@ class App(object):
         self.light = Light(GL_LIGHT0, (15, 5, 15, 1))
         self.sphere1 = Sphere(2, (0, 0, 0), (1, 1, 1, 1))
         self.sphere2 = Sphere(1, (4, 2, 0), (1, 0.4, 0.4, 1))
+        self.cube1 = Cube((2, 0, 1.5), (1, 1, 1), (1, 1, 1, 1))
 
     def start(self):
         pygame.init()
         pygame.display.set_mode((self.width, self.height), OPENGL | DOUBLEBUF)
         pygame.display.set_caption(self.title)
 
+        #glEnable(GL_LIGHTING)
         glEnable(GL_CULL_FACE)
         glEnable(GL_DEPTH_TEST)
         self.light.enable()
@@ -85,6 +88,7 @@ class App(object):
         self.light.render()
         self.sphere1.render()
         self.sphere2.render()
+        self.cube1.render()
         pygame.display.flip()
 
     def quit(self):
