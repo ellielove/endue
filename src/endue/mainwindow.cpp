@@ -28,7 +28,6 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
     QString str;
     QTextStream(&str) << "mouse: (" << pos.x() << ", " << pos.y() << ")";
     ui->statusBar->showMessage(str, 0);
-
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
@@ -44,5 +43,18 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
     if (debug_mode)
     {
         qDebug() << "Mouse Up; Button# " << event->button();
+    }
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    Qt::Key key = static_cast<Qt::Key>(event->key());
+    if (key == Qt::Key_Escape)
+    {
+        this->close();
+    }
+    if (key == Qt::Key_Space)
+    {
+        // expand current node?
     }
 }

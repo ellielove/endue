@@ -16,6 +16,12 @@ private:
     float half_height;
 
 public:
+    DrawableNode()
+    {
+        QRect default_rect(10, 10, 0, 0);
+        this->setRect(default_rect);
+    }
+
     DrawableNode(QRect Rect) : QGraphicsEllipseItem(Rect)
     {
         setFlag(QGraphicsEllipseItem::ItemIsMovable);
@@ -28,10 +34,8 @@ public:
     }
 
 
-
     void mousePressEvent(QGraphicsSceneMouseEvent *event)
     {
-        QPointF pos = event->pos();
         if (event->button() == Qt::LeftButton)
         {
             qDebug() << "LMB";
@@ -64,7 +68,6 @@ public:
             this->setRect(next_rect);
         }
     }
-
 };
 
 
