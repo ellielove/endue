@@ -95,11 +95,11 @@ class Node(QGraphicsItem):
         if option.state & QStyle.State_Sunken:
             gradient.setCenter(3, 3)
             gradient.setFocalPoint(3, 3)
-            gradient.setColorAt(1, QColor(Qt.yellow).lighter(120))
-            gradient.setColorAt(0, QColor(Qt.darkYellow).lighter(120))
+            gradient.setColorAt(1, QColor(Qt.red).lighter(120))
+            gradient.setColorAt(0, QColor(Qt.darkRed).lighter(120))
         else:
-            gradient.setColorAt(0, Qt.yellow)
-            gradient.setColorAt(1, Qt.darkYellow)
+            gradient.setColorAt(0, Qt.cyan)
+            gradient.setColorAt(1, Qt.darkCyan)
 
         painter.setBrush(QBrush(gradient))
         painter.setPen(QPen(Qt.black, 0))

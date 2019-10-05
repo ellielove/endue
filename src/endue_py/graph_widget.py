@@ -119,8 +119,8 @@ class GraphWidget(QGraphicsView):
         if bttn == Qt.LeftButton:
             pos = event.pos()
             self.add_node(pos.x(), pos.y(), uuid.uuid4())
-
-        pass
+        else:
+            super(GraphWidget, self).mousePressEvent(event)
 
     def timerEvent(self, event):
         nodes = [item for item in self.scene().items() if isinstance(item, Node)]
