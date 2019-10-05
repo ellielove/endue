@@ -1,5 +1,6 @@
 
 import math
+import uuid
 
 from PyQt5.QtCore import (qrand, QRectF, QPointF, Qt)
 from PyQt5.QtGui import (QBrush, QLinearGradient, QPainter)
@@ -113,6 +114,12 @@ class GraphWidget(QGraphicsView):
             super(GraphWidget, self).keyPressEvent(event)
 
     def mousePressEvent(self, event):
+        bttn = event.button()
+
+        if bttn == Qt.LeftButton:
+            pos = event.pos()
+            self.add_node(pos.x(), pos.y(), uuid.uuid4())
+
         pass
 
     def timerEvent(self, event):
@@ -164,9 +171,9 @@ class GraphWidget(QGraphicsView):
         font.setPointSize(14)
         painter.setFont(font)
         painter.setPen(Qt.lightGray)
-        painter.drawText(textRect.translated(2, 2), message)
+        #painter.drawText(textRect.translated(2, 2), message)
         painter.setPen(Qt.black)
-        painter.drawText(textRect, message)
+        #painter.drawText(textRect, message)
 
     def scale_view(self, scale_factor):
         factor = self.transform().scale(scale_factor, scale_factor).mapRect(QRectF(0, 0, 1, 1)).width()
