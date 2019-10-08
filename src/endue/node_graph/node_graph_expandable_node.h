@@ -9,10 +9,16 @@ public:
     NodeGraphExpandableNode();
 
     // overrides from QGraphicsItem
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-    QRectF boundingRect() const;
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
+    QRectF boundingRect() const override;
+    QPainterPath shape() const override;
+
+    void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
+    void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
 
 
+    QColor base_color;
     // position in 2d space
     // position in 3d space?
     // isExpanded
