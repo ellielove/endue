@@ -9,9 +9,12 @@
 #include <QTextStream>
 #include <QUndoStack>
 
+#include <QGraphicsScene>
+#include <QGraphicsView>
+#include <QGraphicsEllipseItem>
 
-#include <node_graph/node_graph_graphics_scene.h>
-#include<node_graph/node_graph_graphics_view.h>
+//#include <node_graph/node_graph_graphics_scene.h>
+//#include<node_graph/node_graph_graphics_view.h>
 
 namespace Ui {
 class MainWindow;
