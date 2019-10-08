@@ -25,12 +25,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+    node_graph/node_graph_graphics_scene.cpp \
+    node_graph/node_graph_graphics_view.cpp \
+    node_graph/node_graph_expandable_node.cpp \
+    main_window.cpp
 
 HEADERS += \
-        mainwindow.h \
-    ui/drawablenode.h
-        #glib/glib.h
+    ui/drawable_node.h \
+    main_window.h \
+    node_graph/node_graph_graphics_scene.h \
+    node_graph/node_graph_graphics_view.h \
+    node_graph/node_graph_expandable_node.h
+
 
 FORMS += \
         mainwindow.ui

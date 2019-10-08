@@ -1,10 +1,10 @@
 
 #include <QApplication>
+#include "main_window.h"
+
+
 #include <QGraphicsScene>
 #include <QGraphicsView>
-
-#include "mainwindow.h"
-#include "ui/drawablenode.h"
 
 int main(int argc, char *argv[])
 {
@@ -12,14 +12,6 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.setWindowTitle(QString("Endue"));
     w.show();
-
-    ///QGraphicsScene scene;
-    ///
-    ///DrawableNode *circleItem = new DrawableNode(QRect(0, 50, 25, 25));
-    ///scene.addItem(circleItem);
-    ///
-    ///QGraphicsView view(&scene);
-    ///view.show();
 
     return a.exec();
 }
