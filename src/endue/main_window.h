@@ -38,8 +38,8 @@ private:
     QPoint m_mouse_pos;
     bool m_show_mouse_pos = true;
 
-    QGraphicsScene m_scene;
-    QGraphicsView m_view;
+    QGraphicsScene *scene;
+    QGraphicsView *view;
 
     QAction *new_document_action;
     QAction *open_document_action;

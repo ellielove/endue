@@ -3,9 +3,7 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow),
-    m_scene(new QGraphicsScene(parent)),
-    m_view(new QGraphicsView(parent))
+    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
@@ -13,11 +11,11 @@ MainWindow::MainWindow(QWidget *parent) :
     this->create_menus();
     this->setMouseTracking(true);
 
-    m_view.setScene(&m_scene);
-    m_view.setAttribute(Qt::WA_TransparentForMouseEvents);
-    this->setCentralWidget(&m_view);
+    scene = new QGraphicsScene(this);
+    view = new QGraphicsView(scene, this);
 
-
+    view->setAttribute(Qt::WA_TransparentForMouseEvents);
+    this->setCentralWidget(view);
 }
 
 MainWindow::~MainWindow()
@@ -45,12 +43,13 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     qDebug() << "Mouse Down; Button# " << event->button();
 
     QPointF pos = event->pos();
+    qreal rad = 20;
 
-    auto ellipse = m_scene.addEllipse(pos.x()-20, pos.y()-20, 40, 40);
-    ellipse->setTransformOriginPoint(20, 20);
+    auto ellipse = scene->addEllipse(-rad, -rad, rad * 2.0, rad * 2.0);
+    ellipse->setPos(pos);
     ellipse->setVisible(true);
 
-    qDebug() << "scene.items() = " << m_scene.items().count();
+    qDebug() << "scene->items() = " << scene->items().count();
 }
 void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 {
