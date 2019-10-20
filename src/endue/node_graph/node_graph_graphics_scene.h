@@ -9,8 +9,7 @@ public:
     // https://en.wikipedia.org/wiki/C++11#Explicitly_defaulted_and_deleted_special_member_functions
     //NodeGraphGraphicsScene & operator=(const NodeGraphGraphicsScene&) = delete;
     //NodeGraphGraphicsScene(const NodeGraphGraphicsScene&) = delete;
-    NodeGraphGraphicsScene(QObject *parent = nullptr) : QGraphicsScene(parent)
-    {}
+    explicit NodeGraphGraphicsScene(QObject *parent = nullptr);
 };
 
 #endif // NODE_GRAPH_GRAPHICS_SCENE_H

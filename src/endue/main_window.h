@@ -10,11 +10,10 @@
 #include <QUndoStack>
 
 #include <QGraphicsScene>
-#include <QGraphicsView>
 #include <QGraphicsEllipseItem>
 
 //#include <node_graph/node_graph_graphics_scene.h>
-//#include<node_graph/node_graph_graphics_view.h>
+#include<node_graph/node_graph_graphics_view.h>
 
 namespace Ui {
 class MainWindow;
@@ -39,7 +38,7 @@ private:
     bool m_show_mouse_pos = true;
 
     QGraphicsScene *scene;
-    QGraphicsView *view;
+    NodeGraphGraphicsView *view;
 
     QAction *new_document_action;
     QAction *open_document_action;

@@ -5,10 +5,12 @@
 
 class NodeGraphGraphicsView : public QGraphicsView
 {
-public:
-    NodeGraphGraphicsView(QWidget *parent = nullptr) : QGraphicsView(parent){}
-    NodeGraphGraphicsView(QGraphicsScene *scene, QWidget *parent = nullptr) : QGraphicsView(scene, parent){}
+private:
+    const QRectF DEFAULT_SCENE_RECT = QRectF(0, 0, 4000, 4000);
 
+public:
+    explicit NodeGraphGraphicsView(QWidget *parent = nullptr);
+    explicit NodeGraphGraphicsView(QGraphicsScene *scene, QWidget *parent = nullptr);
 };
 
 #endif // NODE_GRAPH_GRAPHICS_VIEW_H

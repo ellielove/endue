@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setMouseTracking(true);
 
     scene = new QGraphicsScene(this);
-    view = new QGraphicsView(scene, this);
+    view = new NodeGraphGraphicsView(scene, this);
 
     view->setAttribute(Qt::WA_TransparentForMouseEvents);
     this->setCentralWidget(view);
@@ -45,7 +45,9 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     QPointF pos = event->pos();
     qreal rad = 20;
 
-    auto ellipse = scene->addEllipse(-rad, -rad, rad * 2.0, rad * 2.0);
+    // contains the right offset for current ellipse
+    const auto ellipseRect = QRectF(-rad, -rad * 3.0, rad * 2.0, rad * 2.0);
+    auto ellipse = scene->addEllipse(ellipseRect);
     ellipse->setPos(pos);
     ellipse->setVisible(true);
 
@@ -164,6 +166,4 @@ void MainWindow::create_menus()
     edit_menu->addAction(copy_current_selection_action);
     edit_menu->addAction(paste_current_selection_action);
     //edit_menu->addSeparator();
-
-
 }
