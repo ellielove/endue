@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QDebug>
+
+#include <QFileDialog>
 #include <QMainWindow>
 #include <QMouseEvent>
 
@@ -40,6 +42,9 @@ private:
     QGraphicsScene *scene;
     NodeGraphGraphicsView *view;
 
+
+protected:
+    // Command actions
     QAction *new_document_action;
     QAction *open_document_action;
     QAction *save_as_document_action;
@@ -56,21 +61,23 @@ private:
 
     QUndoStack *undo_stack;
 
+
+    // Callbacks for command actions
     void create_actions();
     void create_menus();
 
-    void create_new_document(){qDebug() << "create_new_document";};
-    void open_existing_document(){qDebug() << "open_existing_document";};
-    void save_document_as(){qDebug() << "save_as_document";};
-    void auto_save_document(){qDebug() << "auto_save_document";};
-    void exit_program(){qDebug() << "exit_program";};
+    void on_triggered__create_new_document();
+    void on_triggered__open_existing_document();
+    void on_triggered__save_document_as();
+    void on_triggered__auto_save_document();
+    void on_triggered__exit_program();
 
-    void undo_last_action(){qDebug() << "undo_last_action";};
-    void redo_last_action(){qDebug() << "redo_last_action";};
+    void on_triggered__undo_last_action();
+    void on_triggered__redo_last_action();
 
-    void cut_current_selection(){qDebug() << "cut_current_selection";};
-    void copy_current_selection(){qDebug() << "copy_current_selection";};
-    void paste_current_selection(){qDebug() << "paste_current_selection";};
+    void on_triggered__cut_current_selection();
+    void on_triggered__copy_current_selection();
+    void on_triggered__paste_current_selection();
 };
 
 #endif // MAINWINDOW_H
