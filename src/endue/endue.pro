@@ -28,14 +28,18 @@ SOURCES += \
     node_graph/node_graph_graphics_scene.cpp \
     node_graph/node_graph_graphics_view.cpp \
     node_graph/node_graph_expandable_node.cpp \
-    main_window.cpp
+    node_graph/node_graph_edge.cpp \
+    endue_main_window.cpp
 
 HEADERS += \
     ui/drawable_node.h \
-    main_window.h \
     node_graph/node_graph_graphics_scene.h \
     node_graph/node_graph_graphics_view.h \
-    node_graph/node_graph_expandable_node.h
+    node_graph/node_graph_expandable_node.h \
+    node_graph/node_graph_edge.h \
+    catch.hpp \
+    testing_switch.h \
+    endue_main_window.h
 
 
 FORMS += \
