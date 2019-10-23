@@ -37,8 +37,6 @@ HEADERS += \
     node_graph/node_graph_graphics_view.h \
     node_graph/node_graph_expandable_node.h \
     node_graph/node_graph_edge.h \
-    catch.hpp \
-    testing_switch.h \
     endue_main_window.h
 
 
