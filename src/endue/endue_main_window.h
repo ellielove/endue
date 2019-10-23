@@ -34,6 +34,8 @@ public:
     void mouseReleaseEvent(QMouseEvent *event);
     void keyPressEvent(QKeyEvent *event);
 
+    void createNode(const QPointF position);
+
 private:
     Ui::MainWindow *ui;
     QPoint m_mouse_pos;

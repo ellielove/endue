@@ -23,6 +23,21 @@ EndueMainWindow::~EndueMainWindow()
     delete ui;
 }
 
+
+void EndueMainWindow::createNode(const QPointF position, qreal radius = 20)
+{
+    // contains the right offset for current ellipse
+    const auto ellipseRect = QRectF(
+          -radius
+        , -radius * 3.0
+        ,  radius * 2.0
+        ,  radius * 2.0
+    );
+    auto ellipse = scene->addEllipse(ellipseRect);
+    ellipse->setPos(position);
+    ellipse->setVisible(true);
+}
+
 void EndueMainWindow::mouseMoveEvent(QMouseEvent *event)
 {
     if (m_show_mouse_pos)
@@ -42,14 +57,7 @@ void EndueMainWindow::mousePressEvent(QMouseEvent *event)
 {
     qDebug() << "Mouse Down; Button# " << event->button();
 
-    QPointF pos = event->pos();
-    qreal rad = 20;
-
-    // contains the right offset for current ellipse
-    const auto ellipseRect = QRectF(-rad, -rad * 3.0, rad * 2.0, rad * 2.0);
-    auto ellipse = scene->addEllipse(ellipseRect);
-    ellipse->setPos(pos);
-    ellipse->setVisible(true);
+    this->createNode(event->pos());
 
     qDebug() << "scene->items() = " << scene->items().count();
 }
@@ -147,7 +155,6 @@ void EndueMainWindow::create_actions()
     connect(undo_action, &QAction::triggered, this, &EndueMainWindow::on_triggered__undo_last_action);
 }
 
-
 void EndueMainWindow::create_menus()
 {
     file_menu = menuBar()->addMenu(tr("&File"));
@@ -234,7 +241,6 @@ void EndueMainWindow::on_triggered__save_document_as()
     //    Check path (just in case)
     //    Write to path
 }
-
 
 void EndueMainWindow::on_triggered__auto_save_document(){qDebug()<<"auto_save_document";}
 
