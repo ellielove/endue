@@ -23,21 +23,6 @@ EndueMainWindow::~EndueMainWindow()
     delete ui;
 }
 
-
-void EndueMainWindow::createNode(const QPointF position, qreal radius = 20)
-{
-    // contains the right offset for current ellipse
-    const auto ellipseRect = QRectF(
-          -radius
-        , -radius * 3.0
-        ,  radius * 2.0
-        ,  radius * 2.0
-    );
-    auto ellipse = scene->addEllipse(ellipseRect);
-    ellipse->setPos(position);
-    ellipse->setVisible(true);
-}
-
 void EndueMainWindow::mouseMoveEvent(QMouseEvent *event)
 {
     if (m_show_mouse_pos)
@@ -57,10 +42,13 @@ void EndueMainWindow::mousePressEvent(QMouseEvent *event)
 {
     qDebug() << "Mouse Down; Button# " << event->button();
 
-    this->createNode(event->pos());
+    auto node = new NodeGraphExpandableNode(createExpandedNodes);
+    node->setPos(event->pos());
+    scene->addItem(node);
 
-    qDebug() << "scene->items() = " << scene->items().count();
+    qDebug() << "# items: " << scene->items().length();
 }
+
 void EndueMainWindow::mouseReleaseEvent(QMouseEvent *event)
 {
     qDebug() << "Mouse Up; Button# " << event->button();
@@ -75,7 +63,7 @@ void EndueMainWindow::keyPressEvent(QKeyEvent *event)
     }
     if (key == Qt::Key_Space){}
     if (key == Qt::Key_1){ m_show_mouse_pos = !m_show_mouse_pos; }
-    if (key == Qt::Key_2){}
+    if (key == Qt::Key_2){ createExpandedNodes = !createExpandedNodes;}
     if (key == Qt::Key_3){}
     if (key == Qt::Key_4){}
 }

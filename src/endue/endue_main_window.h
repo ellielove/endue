@@ -9,13 +9,15 @@
 
 #include <QKeyEvent>
 #include <QTextStream>
+#include <QTransform>
 #include <QUndoStack>
 
 #include <QGraphicsScene>
 #include <QGraphicsEllipseItem>
 
 //#include <node_graph/node_graph_graphics_scene.h>
-#include<node_graph/node_graph_graphics_view.h>
+#include <node_graph/node_graph_graphics_view.h>
+#include <node_graph/node_graph_expandable_node.h>
 
 namespace Ui {
 class MainWindow;
@@ -34,32 +36,33 @@ public:
     void mouseReleaseEvent(QMouseEvent *event);
     void keyPressEvent(QKeyEvent *event);
 
-    void createNode(const QPointF position);
 
 private:
-    Ui::MainWindow *ui;
+    Ui::MainWindow * ui;
     QPoint m_mouse_pos;
-    bool m_show_mouse_pos = true;
 
-    QGraphicsScene *scene;
-    NodeGraphGraphicsView *view;
+    bool m_show_mouse_pos = true;
+    bool createExpandedNodes = false;
+
+    QGraphicsScene * scene;
+    NodeGraphGraphicsView * view;
 
 
 protected:
     // Command actions
-    QAction *new_document_action;
-    QAction *open_document_action;
-    QAction *save_as_document_action;
-    QAction *autosave_document_action;
-    QAction *exit_program_action;
-    QAction *undo_action;
-    QAction *redo_action;
-    QAction *cut_current_selection_action;
-    QAction *copy_current_selection_action;
-    QAction *paste_current_selection_action;
+    QAction * new_document_action;
+    QAction * open_document_action;
+    QAction * save_as_document_action;
+    QAction * autosave_document_action;
+    QAction * exit_program_action;
+    QAction * undo_action;
+    QAction * redo_action;
+    QAction * cut_current_selection_action;
+    QAction * copy_current_selection_action;
+    QAction * paste_current_selection_action;
 
-    QMenu *file_menu;
-    QMenu *edit_menu;
+    QMenu * file_menu;
+    QMenu * edit_menu;
 
     QUndoStack *undo_stack;
 
