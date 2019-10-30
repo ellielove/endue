@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui testlib
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -37,6 +37,7 @@ HEADERS += \
     node_graph/node_graph_graphics_view.h \
     node_graph/node_graph_expandable_node.h \
     node_graph/node_graph_edge.h \
+    endue_main_window.h \
     endue_main_window.h
 
 
