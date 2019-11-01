@@ -19,10 +19,16 @@ INCLUDEPATH += src
         ../en_lib/src
 
 SOURCES += src/main.cpp \
-        src/views/mainwindow.cpp
+        src/views/mainwindow.cpp \
+    src/endue_main_window.cpp \
+    src/views/node_graph_graphics_view.cpp \
+    src/node_graph_expandable_node.cpp
 
 HEADERS += \
         src/views/mainwindow.h \
+    src/endue_main_window.h \
+    src/views/node_graph_graphics_view.h \
+    src/node_graph_expandable_node.h
 
 FORMS += \
         src/mainwindow.ui

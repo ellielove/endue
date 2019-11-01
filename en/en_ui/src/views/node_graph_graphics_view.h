@@ -6,7 +6,7 @@
 #include <QMouseEvent>
 #include <QGraphicsView>
 
-#include <node_graph/node_graph_expandable_node.h>
+#include <src/node_graph_expandable_node.h>
 
 class NodeGraphGraphicsView : public QGraphicsView
 {

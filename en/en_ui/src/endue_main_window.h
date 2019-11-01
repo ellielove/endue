@@ -15,9 +15,9 @@
 #include <QGraphicsScene>
 #include <QGraphicsEllipseItem>
 
-//#include <node_graph/node_graph_graphics_scene.h>
-#include <node_graph/node_graph_graphics_view.h>
-#include <node_graph/node_graph_expandable_node.h>
+#include <../en_lib/src/node_graph_graphics_scene.h>
+#include <src/views/node_graph_graphics_view.h>
+#include <src/node_graph_expandable_node.h>
 
 namespace Ui {
 class MainWindow;
