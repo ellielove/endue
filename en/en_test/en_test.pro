@@ -21,7 +21,6 @@ INCLUDEPATH += \
 SOURCES += \
     main.cpp \
     test_suite.cpp \
-    src/models/tst_client_tests.cpp \
     src/controllers/controller_prime_tests.cpp
 
 DEFINES += QT_DEPRECATED_WARNINGS

@@ -4,7 +4,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 
-#include <../en_ui/src/endue_main_window.h>
+#include <src/endue_main_window.h>
 
 
 int main(int argc, char *argv[])

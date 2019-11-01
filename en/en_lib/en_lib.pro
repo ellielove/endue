@@ -14,16 +14,15 @@ CONFIG += C++14
 DEFINES += EN_LIB_LIBRARY
 INCLUDEPATH += \
             src \
-            src/models \
             src/controllers
 
 DEFINES += QT_DEPRECATED_WARNINGS
 
-SOURCES +=  src/models/client.cpp \
+SOURCES +=  \
             src/controllers/controller_prime.cpp
 
-HEADERS +=  src/en_lib_global.h \
-            src/models/client.h \
+HEADERS +=  \
+            src/en_lib_global.h \
             src/controllers/controller_prime.h
 
 unix {
